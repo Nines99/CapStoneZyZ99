@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:8000/', // Backend Port 8000
-      '/images': 'http://localhost:8000/'
+      '/api': 'http://localhost:8081/', // Backend Port 8000
+      '/images': 'http://localhost:8081/'
     }
   }
 })

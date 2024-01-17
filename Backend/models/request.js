@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const requestSchema = new Schema({
 
-  RequestID: { type: mongoose.Types.ObjectId },
-  UserID: { type: mongoose.Types.ObjectId, ref: 'User' },
-  TeamID: { type: mongoose.Types.ObjectId, ref: 'Team' },
+  
+  UserID: { type: Schema.Types.ObjectId, ref: 'user' },
+  TeamID: { type: Schema.Types.ObjectId, ref: 'team' },
   Message: { type: String },
   Date: { type: Date },
 

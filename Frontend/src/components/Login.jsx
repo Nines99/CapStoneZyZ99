@@ -49,8 +49,8 @@ export default function Login() {
     event.preventDefault();
 
     // add some password validation //Password Rules!!
-    if (userPassword.length < 5) {
-        setSubmitResult("Password must be at least 5 characters long");
+    if (userPassword.length < 3) {
+        setSubmitResult("Password must be at least 3 characters long");
         setLoginAttempts(loginAttempts + 1)
       } else if (userEmail.length < 8) {
           setSubmitResult("Email address must be at least 8 characters long");      

@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
 const getRequests = (res) => {
 
   Models.Request.find({})
+    // .populate({path: 'user'})
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
       console.log(err);

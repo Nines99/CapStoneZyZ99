@@ -64,6 +64,7 @@ const loginUser = async (req, res) => {
   try {
       // Get user input from request body
       const { email, password } = req.body;
+      console.log(req.body)
 
       // Validate user input
       if (!(email && password)) {
@@ -71,10 +72,11 @@ const loginUser = async (req, res) => {
           return; // when sending responses and finishing early, manually return or end the function to stop further processing
       }
       // Validate if user exists in our database
-      const user = await Models.User.findOne({ email: email });
+      const user = await Models.User.findOne({ Email: email });
+        console.log(user)
 
       // if they do exist, make sure their password matches - need to check encrypted version of password
-      if (user && (await bcrypt.compare(password, user.password))) {
+      if (user && (await bcrypt.compare(password, user.Password))) {
           // Create token for use based on their id and email
           // const token = createToken(user.id, email);
           // // save user token

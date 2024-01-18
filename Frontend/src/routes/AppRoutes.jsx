@@ -6,6 +6,8 @@ import MainPage from "../pages/MainPage";
 // import { RequestsList, Request } from "../components/RequestsList";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "../components/Login";
+import SinglePlayerRequestPage from "../pages/SinglePlayerRequestPage";
+import MultiPlayerRequestPage from "../pages/MultiPlayerRequestPage";
 
 
 function AppRoutes(props) {
@@ -23,6 +25,9 @@ function AppRoutes(props) {
       <Route path="login" element={<Login/>} />
       <Route path="/signup" element={<SignUpPage {...props} />} />
       <Route path="/mainpage" element={<MainPage {...props} />} />
+      <Route path="/sp_request" element={<SinglePlayerRequestPage {...props} />} />
+      <Route path="/mp_request" element={<MultiPlayerRequestPage {...props} />} />
+
 
         {/* <Route index element={<RequestsList />} />
         <Route path=":id" element={<Request />} />

@@ -11,7 +11,22 @@ const getRequests = (res) => {
       console.log(err);
       res.send({ result: 500, error: err.message });
     });
+};
 
+const getCurrentRequests = (res) => {
+
+  const today = new Date()
+  console.log(today)
+  const yesterday = new Date(today.getFullYear(),today.getMonth(),today.getDate()-1,)
+  console.log(yesterday)
+
+  Models.Request.find({Date:{$gte:yesterday}})
+    // .populate({path: 'user'})
+    .then((data) => res.send({ result: 200, data: data }))
+    .catch((err) => {
+      console.log(err);
+      res.send({ result: 500, error: err.message });
+    });
 };
 
 const getRequestbyID = (req, res) => {
@@ -66,4 +81,5 @@ module.exports = {
   updateRequest,
   deleteRequest,
   getRequestbyID,
+  getCurrentRequests,
 }

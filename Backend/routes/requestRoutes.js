@@ -7,6 +7,11 @@ router.get("/", (req, res) => {
 
 });
 
+router.get("/current", (req, res) => {
+  Controllers.requestController.getCurrentRequests(res);
+
+});
+
 router.get('/:id', (req, res) => {
   Controllers.requestController.getRequestbyID(req, res)
 })
@@ -23,5 +28,6 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     Controllers.requestController.deleteRequest(req, res)
 })
+
 
 module.exports = router;

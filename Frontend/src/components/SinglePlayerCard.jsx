@@ -13,11 +13,12 @@ export default function SinglePlayerCard({userid, teamid, message, date}) {
         userDetails = response.data.data
           setUser(userDetails)
       }).then(response => {
+        console.log(userDetails)
           let TagName = userDetails.BattleTag.split("#")[0]
           let TagNum = userDetails.BattleTag.split("#")[1]
           axios.get(`https://overwatch-api.zusor.io/v1/player/${TagName}-${TagNum}`).then(response => {
-              setRoles(response.data[user.Platform])
-              console.log(response.data[user.Platform])
+              setRoles(response.data[userDetails.Platform])
+              console.log(response.data[userDetails.Platform])
           }).catch(err => {
         setErrmessage("Rank could not be found.")
         console.log(err)
@@ -35,9 +36,9 @@ export default function SinglePlayerCard({userid, teamid, message, date}) {
             {errMessage? errMessage:
             <>
             Rank: 
-            Tank:{roles?.tank?.group}-{roles?.tank?.tier}
-            Damage:{roles?.damage?.group}-{roles?.damage?.tier}
-            Support:{roles?.support?.group}-{roles?.support?.tier}
+            Tank:{roles?.tank?.group} {roles?.tank?.tier}
+            Damage:{roles?.damage?.group} {roles?.damage?.tier}
+            Support:{roles?.support?.group} {roles?.support?.tier}
             </>
             }
           </Typography>

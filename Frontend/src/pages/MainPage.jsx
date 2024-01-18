@@ -7,7 +7,7 @@ export default function MainPage() {
   const [ requestlist, setRequestlist ] = useState([])
 
   useEffect(()=> {
-    axios.get("/api/requests/").then(response => {
+    axios.get("/api/requests/current/").then(response => {
         console.log(response.data)
         setRequestlist(response.data.data)
     })

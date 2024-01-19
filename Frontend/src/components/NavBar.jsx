@@ -13,14 +13,25 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../context/UserContext';
+import { Link } from 'react-router-dom';
 
-const pages = [{label:'Main', link:'/mainpage'}, {label:'SingleP Request', link:'/sp_request'}, {label:'MultiP Request', link:'/mp_request'}] ; //{label:'Request', link:'/'];
-const settings = [{label:'Profile', link:'/'}, {label:'Logout', link:'/logout'}];
+const pages = [
+  {label:'Main', link:'/mainpage'}, 
+  {label:'Request', link:'/solo_request'}, 
+  ]
+
+  const settings = [
+    {label:'Profile', link:'/profile'}, 
+    {label:'Logout', link:'/logout'},
+  ];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate()
+  
+  const { currentUser, handleUpdateUser } = useUserContext();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -45,8 +56,8 @@ function ResponsiveAppBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -57,7 +68,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Overwatch LFG PC
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -90,12 +101,13 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
+                currentUser.Email?
                 <MenuItem key={page.label} onClick={() => {
-                  navigate(page.link);  
+                  navigate(page.label=="Request"?currentUser.Playertype+"_request":page.link);  
                   handleCloseNavMenu()}}>
 
                   <Typography textAlign="center">{page.label}</Typography>
-                </MenuItem>
+                </MenuItem>:null
               ))}
             </Menu>
           </Box>
@@ -103,8 +115,8 @@ function ResponsiveAppBar() {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -116,20 +128,20 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Overwatch LFG Mobile
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page.label}
-                  onClick={() => {
-                  navigate(page.link);  
+                currentUser.Email?
+                <Button key={page.label} onClick={() => {
+                  navigate(page.label=="Request"?currentUser.Playertype+"_request":page.link);  
                   handleCloseNavMenu()}}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                {page.label}
-              </Button>
-            ))}
+
+                  <Typography textAlign="center">{page.label}</Typography>
+                </Button>:null
+              ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

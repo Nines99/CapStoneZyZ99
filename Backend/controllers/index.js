@@ -1,6 +1,6 @@
 module.exports={
     userController: require("./userController"),
-    requestController: require("./requestController"),
+    soloRequestController: require("./soloRequestController"),
     roleController: require("./roleController"),
-    teamController: require("./teamController"),
+    teamRequestController: require("./teamRequestController"),
 }

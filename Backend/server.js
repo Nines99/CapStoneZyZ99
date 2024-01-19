@@ -18,10 +18,10 @@ app.use('/api/users', userRoutes)
 let roleRoutes = require('./routes/roleRoutes')
 app.use('/api/roles', roleRoutes)
 
-let teamRoutes = require('./routes/teamRoutes')
+let teamRoutes = require('./routes/teamRequestRoutes')
 app.use('/api/teams', teamRoutes)
 
-let requestRoutes = require('./routes/requestRoutes')
+let requestRoutes = require('./routes/soloRequestRoutes')
 app.use('/api/requests', requestRoutes)
 
 app.listen(PORT, () => {

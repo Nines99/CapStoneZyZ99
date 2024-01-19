@@ -21,11 +21,17 @@ export default function ProfilePage() {
   const [discord, setDiscord] = React.useState(currentUser.Discord);
   const [battletag, setBattleTag] = React.useState(currentUser.BattleTag);
 
+  const [playertype, setPlayertype] = React.useState(currentUser.Playertype);
+
   const [formupdate, setFormUpdate] = React.useState(false);
 
-  const handleChange = (event, newPlatform) => {
+  const handlePlatformChange = (event, newPlatform) => {
     setPlatform(newPlatform);
   };
+  const handlePlayertypeChange = (event, newPlayertype) => {
+    setPlayertype(newPlayertype);
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,9 +43,12 @@ export default function ProfilePage() {
       Discord: discord,
       BattleTag: battletag,
       Platform: platform,
+      Playertype: playertype,
     };
     axios.put(`/api/users/${currentUser._id}`, updatedUserInfo).then(response => {
       setFormUpdate(true);
+      console.log(response.data.data);
+      handleUpdateUser(response.data.data);
     })
   };
 
@@ -102,11 +111,23 @@ export default function ProfilePage() {
                 color="primary"
                 value={platform}
                 exclusive
-                onChange={handleChange}
+                onChange={handlePlatformChange}
                 aria-label="Platform"
               >
                 <ToggleButton value="pc">PC</ToggleButton>
                 <ToggleButton value="console">Console</ToggleButton>
+              </ToggleButtonGroup>
+            </Grid>
+            <Grid item xs={12}>
+              <ToggleButtonGroup
+                color="primary"
+                value={playertype}
+                exclusive
+                onChange={handlePlayertypeChange}
+                aria-label="Solo or Team?"
+              >
+                <ToggleButton value="solo">Solo</ToggleButton>
+                <ToggleButton value="team">Team</ToggleButton>
               </ToggleButtonGroup>
             </Grid>
             <Grid item xs={12}>

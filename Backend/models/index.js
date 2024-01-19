@@ -2,8 +2,8 @@
 module.exports = {
 
 Role: require('./role'),
-Team: require('./team'),
+TeamRequest: require('./teamRequest'),
 User: require('./user'),
-Request: require('./request'),
+SoloRequest: require('./soloRequest'),
 
 };

@@ -2,9 +2,9 @@
 let Models = require("../models");
 const mongoose = require("mongoose")
 
-const getRequests = (res) => {
+const getSoloRequests = (res) => {
 
-  Models.Request.find({})
+  Models.SoloRequest.find({})
     // .populate({path: 'user'})
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
@@ -13,14 +13,14 @@ const getRequests = (res) => {
     });
 };
 
-const getCurrentRequests = (res) => {
+const getCurrentSoloRequests = (res) => {
 
   const today = new Date()
   console.log(today)
   const yesterday = new Date(today.getFullYear(),today.getMonth(),today.getDate()-1,)
   console.log(yesterday)
 
-  Models.Request.find({Date:{$gte:yesterday}})
+  Models.SoloRequest.find({Date:{$gte:yesterday}})
     // .populate({path: 'user'})
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
@@ -29,9 +29,9 @@ const getCurrentRequests = (res) => {
     });
 };
 
-const getRequestbyID = (req, res) => {
+const getSoloRequestbyID = (req, res) => {
 
-  Models.Request.findById(req.params.id)
+  Models.SoloRequest.findById(req.params.id)
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
       console.log(err);
@@ -40,11 +40,11 @@ const getRequestbyID = (req, res) => {
 
 };
 
-const createRequest = (data, res) => {
+const createSoloRequest = (data, res) => {
   
   console.log(data);
 
-  new Models.Request(data)
+  new Models.SoloRequest(data)
     .save()
     .then((data) => res.send({ result: 200, data: data }))
     .catch((err) => {
@@ -53,8 +53,8 @@ const createRequest = (data, res) => {
     });
 };
 
-const updateRequest = (req, res) => {
-  Models.Request.findByIdAndUpdate(req.params.id,req.body, {
+const updateSoloRequest = (req, res) => {
+  Models.SoloRequest.findByIdAndUpdate(req.params.id,req.body, {
       useFindAndModify: false, 
 
   }).then(function (data) {
@@ -64,8 +64,8 @@ const updateRequest = (req, res) => {
   })
 }
 
-const deleteRequest = (req, res) => {
-  Models.Request.findByIdAndDelete(req.params.id,req.body, {
+const deleteSoloRequest = (req, res) => {
+  Models.SoloRequest.findByIdAndDelete(req.params.id,req.body, {
       useFindAndModify: false, 
 
   }).then(function (data) {
@@ -76,10 +76,10 @@ const deleteRequest = (req, res) => {
 }
 
 module.exports = {
-  getRequests,
-  createRequest,
-  updateRequest,
-  deleteRequest,
-  getRequestbyID,
-  getCurrentRequests,
+  getSoloRequests,
+  createSoloRequest,
+  updateSoloRequest,
+  deleteSoloRequest,
+  getSoloRequestbyID,
+  getCurrentSoloRequests,
 }

@@ -10,7 +10,9 @@ const userSchema = new Schema({
   TeamID: { type: mongoose.Types.ObjectId, ref: 'team' },
   RoleID: { type: mongoose.Types.ObjectId, ref: 'role' },
   TeamLeader: { type: Boolean },
-  Platform: { type: String } 
+  Platform: { type: String },
+
+  Playertype: {type: String},
 
 });
 

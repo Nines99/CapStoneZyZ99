@@ -8,9 +8,9 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
 import CheckIcon from "@mui/icons-material/Check";
-import { pink } from '@mui/material/colors';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import { pink } from "@mui/material/colors";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 export default function MultiPlayerRequestPage() {
   const { currentUser, handleUpdateUser } = useUserContext();
@@ -21,6 +21,7 @@ export default function MultiPlayerRequestPage() {
   const [damage2, setDamage2] = React.useState(false);
   const [support1, setSupport1] = React.useState(false);
   const [support2, setSupport2] = React.useState(false);
+  const [message, setMessage] = React.useState("");
 
   const [formupdate, setFormUpdate] = React.useState(false);
 
@@ -35,11 +36,12 @@ export default function MultiPlayerRequestPage() {
       Damage2: damage2,
       Support1: support1,
       Support2: support2,
+      Message: message,
       Date: new Date(),
     };
-    axios.post(`/api/teams/create`, newMPRequestInfo).then(response => {
+    axios.post(`/api/teams/create`, newMPRequestInfo).then((response) => {
       setFormUpdate(true);
-    })
+    });
   };
 
   return (
@@ -58,22 +60,76 @@ export default function MultiPlayerRequestPage() {
                 onChange={(e) => setTeamname(e.target.value)}
               />
             </Grid>
-            <div>
-            <FormControlLabel control={<Checkbox label="tank" checked={tank} onChange={(e) => setTank(e.target.checked)}/>}label="Tank" />
-      <FormControlLabel control={<Checkbox label="damage1" checked={damage1} onChange={(e) => setDamage1(e.target.checked)} color="secondary" />}label="Damage 1" />
-      <FormControlLabel control={<Checkbox label="damage2" checked={damage2} onChange={(e) => setDamage2(e.target.checked)} color="success" />}label="Damage 2" />
-      <FormControlLabel control={<Checkbox label="support1" checked={support1} onChange={(e) => setSupport1(e.target.checked)} color="default" />}label="Support 1" />
-      <FormControlLabel control={<Checkbox
-        label="support2"
-        checked={support2} onChange={(e) => setSupport2(e.target.checked)}
-        sx={{
-          color: pink[800],
-          '&.Mui-checked': {
-            color: pink[600],
-          },
-        }}
-      />}label="Support 2"/>
-    </div>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    label="tank"
+                    checked={tank}
+                    onChange={(e) => setTank(e.target.checked)}
+                  />
+                }
+                label="Tank"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    label="damage1"
+                    checked={damage1}
+                    onChange={(e) => setDamage1(e.target.checked)}
+                    color="secondary"
+                  />
+                }
+                label="Damage 1"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    label="damage2"
+                    checked={damage2}
+                    onChange={(e) => setDamage2(e.target.checked)}
+                    color="success"
+                  />
+                }
+                label="Damage 2"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    label="support1"
+                    checked={support1}
+                    onChange={(e) => setSupport1(e.target.checked)}
+                    color="default"
+                  />
+                }
+                label="Support 1"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    label="support2"
+                    checked={support2}
+                    onChange={(e) => setSupport2(e.target.checked)}
+                    sx={{
+                      color: pink[800],
+                      "&.Mui-checked": {
+                        color: pink[600],
+                      },
+                    }}
+                  />
+                }
+                label="Support 2"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                id="outlined-basic"
+                label="Message"
+                variant="outlined"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </Grid>
             <Grid item xs={12}>
               <Button variant="contained" color="success" type="submit">
                 Submit

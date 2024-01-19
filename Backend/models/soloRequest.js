@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const requestSchema = new Schema({
+const soloRequestSchema = new Schema({
 
   
   UserID: { type: Schema.Types.ObjectId, ref: 'user' },
@@ -10,4 +10,4 @@ const requestSchema = new Schema({
 
 });
 
-module.exports = mongoose.model("request", requestSchema);
+module.exports = mongoose.model("soloRequest", soloRequestSchema);

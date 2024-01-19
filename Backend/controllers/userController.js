@@ -40,7 +40,8 @@ const createUser = (data, res) => {
 
 const updateUser = (req, res) => {
   Models.User.findByIdAndUpdate(req.params.id,req.body, {
-      useFindAndModify: false, 
+      useFindAndModify: false,
+      new:true,
 
   }).then(function (data) {
       res.send({ result: 200, data: data })

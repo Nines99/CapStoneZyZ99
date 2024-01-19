@@ -47,7 +47,7 @@ export default function SignUpPage() {
             setResult(result);
             if (user) {
                 handleUpdateUser(user);
-                navigate('/');
+                navigate('/profile');
             }
         }).catch(err => {
             console.log(err)

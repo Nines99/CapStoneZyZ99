@@ -65,7 +65,7 @@ export default function Login() {
           
           if (response.data.data) {
            handleUpdateUser(response.data.data);  
-           navigate('/');
+           navigate('/profile');
           }
 
         }).catch(error => {

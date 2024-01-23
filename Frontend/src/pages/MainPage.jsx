@@ -30,13 +30,14 @@ export default function MainPage() {
               ?
               <SinglePlayerCard 
               userid = {request.UserID}
-              teamid = {request.UserID} 
+              teamid = {request._id} 
               message = {request.Message}
               date = {request.Date}>
               </SinglePlayerCard>
               :
               <MultiPlayerCard
               teamname = {request.TeamName}
+              teamid = {request._id} 
               tank = {request.Tank}
               damage1 = {request.Damage1}
               damage2 = {request.Damage2}

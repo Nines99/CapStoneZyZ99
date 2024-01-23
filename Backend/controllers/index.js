@@ -3,4 +3,5 @@ module.exports={
     soloRequestController: require("./soloRequestController"),
     roleController: require("./roleController"),
     teamRequestController: require("./teamRequestController"),
+    soloApplicationController: require("./soloApplicationController")
 }

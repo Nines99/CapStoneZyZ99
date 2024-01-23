@@ -4,9 +4,11 @@ const soloRequestSchema = new Schema({
 
   
   UserID: { type: Schema.Types.ObjectId, ref: 'user' },
-  TeamID: { type: Schema.Types.ObjectId, ref: 'team' },
+  TeamID: { type: Schema.Types.ObjectId, ref: 'teamRequest' },
   Message: { type: String },
   Date: { type: Date },
+
+  Status: { type: String, default: "Pending" },
 
 });
 

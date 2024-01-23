@@ -7,7 +7,7 @@ const userSchema = new Schema({
   Email: { type: String, required: true },
   Discord: { type: String, required: true },
   BattleTag: { type: String, required: true },
-  TeamID: { type: mongoose.Types.ObjectId, ref: 'team' },
+  TeamID: { type: mongoose.Types.ObjectId, ref: 'teamRequest' },
   RoleID: { type: mongoose.Types.ObjectId, ref: 'role' },
   TeamLeader: { type: Boolean },
   Platform: { type: String },

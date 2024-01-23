@@ -24,6 +24,9 @@ app.use('/api/teams', teamRoutes)
 let requestRoutes = require('./routes/soloRequestRoutes')
 app.use('/api/requests', requestRoutes)
 
+let soloApplicationRoutes = require('./routes/soloApplicationRoutes')
+app.use('/api/soloApplications', soloApplicationRoutes)
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

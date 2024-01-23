@@ -18,7 +18,8 @@ import { Link } from 'react-router-dom';
 
 const pages = [
   {label:'Main', link:'/mainpage'}, 
-  {label:'Request', link:'/solo_request'}, 
+  {label:'Request', link:'/solo_request'},
+  {label:'Applications', link:'/applications'},
   ]
 
   const settings = [

@@ -4,6 +4,8 @@ import ShieldIcon from '@mui/icons-material/Shield';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import HealingIcon from '@mui/icons-material/Healing';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import SoloApplication from "./SoloApplication";
+
 
 export default function MultiPlayerCard({
     teamid, teamname, tank, damage1, damage2, support1, support2, message, date
@@ -40,7 +42,16 @@ export default function MultiPlayerCard({
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Inspect</Button>
+
+        <SoloApplication 
+        tank = {tank} 
+        damage1 = {damage1} 
+        damage2 = {damage2} 
+        support1 = {support1} 
+        support2 = {support2}
+        teamID = {teamid}
+        />
+
         </CardActions>
       </Card>
     );

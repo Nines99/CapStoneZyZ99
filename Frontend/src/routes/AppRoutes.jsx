@@ -9,30 +9,63 @@ import Login from "../components/Login";
 import SinglePlayerRequestPage from "../pages/SinglePlayerRequestPage";
 import MultiPlayerRequestPage from "../pages/MultiPlayerRequestPage";
 import HomePage from "../pages/Homepage";
-
+import Applications from "../pages/Applications";
 
 function AppRoutes(props) {
   return (
     <Routes>
-      <Route index element={<HomePage/>} />
+      <Route index element={<HomePage />} />
 
       {/* nested routes, matches on /dash/tasks etc */}
-      <Route path="profile" element={
+      <Route
+        path="profile"
+        element={
           <ProtectedRoute>
             <ProfilePage {...props} />
           </ProtectedRoute>
         }
-      >
+      ></Route>
       
-      </Route>
-      <Route path="login" element={<Login/>} />
+      <Route path="login" element={<Login />} />
       <Route path="/signup" element={<SignUpPage {...props} />} />
-      <Route path="/mainpage" element={<MainPage {...props} />} />
-      <Route path="/solo_request" element={<SinglePlayerRequestPage {...props} />} />
-      <Route path="/team_request" element={<MultiPlayerRequestPage {...props} />} />
-      
 
-        {/* <Route index element={<RequestsList />} />
+      <Route
+        path="/mainpage"
+        element={
+          <ProtectedRoute>
+            <MainPage {...props} />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/solo_request"
+        element={
+          <ProtectedRoute>
+            <SinglePlayerRequestPage {...props} />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/team_request"
+        element={
+          <ProtectedRoute>
+            <MultiPlayerRequestPage {...props} />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/applications"
+        element={
+          <ProtectedRoute>
+            <Applications {...props} />
+          </ProtectedRoute>
+        }
+      />
+
+
+      {/* <Route index element={<RequestsList />} />
         <Route path=":id" element={<Request />} />
       </Route> */}
 

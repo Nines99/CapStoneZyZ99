@@ -75,11 +75,7 @@ export default function Application({
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
 
-            Player: {user.Username + user.BattleTag}
-            Applied Role: 
-            {tank?<><ShieldIcon sx={{color:"white"}}/> {roles?.tank?.group + roles?.tank?.tier}</>:null}
-            {damage1 || damage2? <><ElectricBoltIcon sx={{color:"white"}}/> {roles?.damage?.group + roles?.damage?.tier}</>:null}
-            {support1 || support2? <><HealingIcon sx={{color:"white"}}/> {roles?.support?.group + roles?.support?.tier}</>:null}
+            Player: {user.Username +' '+ user.BattleTag} Applied Role: {tank?<><ShieldIcon sx={{color:"white"}}/> {roles?.tank?.group + roles?.tank?.tier}</>:null} {damage1 || damage2? <><ElectricBoltIcon sx={{color:"white"}}/> {roles?.damage?.group + roles?.damage?.tier}</>:null} {support1 || support2? <><HealingIcon sx={{color:"white"}}/> {roles?.support?.group + roles?.support?.tier}</>:null}
 
             Applied Team: {teamname}
           </Typography>

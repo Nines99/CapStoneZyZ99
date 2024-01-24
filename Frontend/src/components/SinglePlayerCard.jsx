@@ -35,10 +35,8 @@ export default function SinglePlayerCard({userid, teamid, message, date}) {
           <Typography variant="h5" component="div">
             {errMessage? errMessage:
             <>
-            Rank: 
-            Tank:{roles?.tank?.group} {roles?.tank?.tier}
-            Damage:{roles?.damage?.group} {roles?.damage?.tier}
-            Support:{roles?.support?.group} {roles?.support?.tier}
+            Rank:
+            Tank: {roles?.tank?.group} {roles?.tank?.tier} Damage: {roles?.damage?.group} {roles?.damage?.tier} Support: {roles?.support?.group} {roles?.support?.tier}
             </>
             }
           </Typography>

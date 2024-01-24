@@ -15,6 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../context/UserContext';
 import { Link } from 'react-router-dom';
+import Overwatch from '../assets/images/Overwatch.png'
 
 const pages = [
   {label:'Main', link:'/mainpage'}, 
@@ -62,7 +63,7 @@ function ResponsiveAppBar() {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'Titillium Web',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -122,7 +123,7 @@ function ResponsiveAppBar() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'Titillium Web',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -147,8 +148,8 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ml: 2 }}>
+                <Avatar alt="Overwatch Icon" src={Overwatch}/>
               </IconButton>
             </Tooltip>
             <Menu
